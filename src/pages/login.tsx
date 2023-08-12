@@ -1,10 +1,11 @@
 import { FC, useState, ChangeEvent } from 'react';
+import { Navigate } from "react-router-dom"
 import { Button } from '../components/Button';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { STORAGE_KEYS } from '../constants';
 
 
-export const Login: FC = () => {
+export const LoginPage: FC = () => {
 	const [ username, setUsername ] = useState('');
   const [ loggedUser, setLoggedUser ] = useLocalStorage(STORAGE_KEYS.LOGGED_USER, '')
 
@@ -15,6 +16,10 @@ export const Login: FC = () => {
 	const handleSubmit = () => {
 		setLoggedUser(username);
 	};
+
+	if (loggedUser) {
+		return <Navigate to='/' replace />
+	}
 
 	return (
 		<div>
