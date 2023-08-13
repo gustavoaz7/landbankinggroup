@@ -9,6 +9,7 @@ import './App.css'
 import { LoginPage } from './pages/login';
 import { ProtectedRoute } from './ProtectedRoute';
 import { HomePage } from './pages/home';
+import { AnimalPage } from './pages/animal';
 
 export const App: FC = () => {
   return (
@@ -16,6 +17,7 @@ export const App: FC = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+        <Route path="/:animal" element={<ProtectedRoute><AnimalPage /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
